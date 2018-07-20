@@ -39,8 +39,7 @@ documentTermMax <- removeSparseTerms(documentTermMax, 0.999)
 
 #Let's pick a classification model
 
-#Decision tree and random forest classification suits best for NLP. Naive Bayes also used for NLP
-
+  #We are using Random forest classification
 dataset <- as.data.frame(as.matrix(documentTermMax))
 dataset$Liked <- dataset_initial$Liked
 
