@@ -1,13 +1,13 @@
 #Natural Language Processing
 
-#Let's import the data set first
+#Step 1: Let's import the data set first
 
 dataset_initial <- read.delim('Restaurant_Reviews.tsv', quote = '', stringsAsFactors = FALSE)
 dataset
 View(dataset)
 
 
-#Let's clean the text
+#Step 2: Let's clean the text
 
 install.packages('tm')
 library(tm)
@@ -25,7 +25,7 @@ corpus <- tm_map(corpus, stemDocument)
 corpus <- tm_map(corpus, stripWhitespace)
 
 
-#Let's create the bag of words model
+#Step 3: Let's create the bag of words model
 
 documentTermMax <- DocumentTermMatrix(corpus)
 documentTermMax <- removeSparseTerms(documentTermMax, 0.999)
@@ -46,10 +46,10 @@ dataset$Liked <- dataset_initial$Liked
 
 
 
-# Encoding the target feature as factor
+# Step 4: Encoding the target feature as factor
 dataset$Liked = factor(dataset$Liked, levels = c(0, 1))
 
-# Let's Split the dataset into the Training set and Test set
+# Step 5: Let's Split the dataset into the Training set and Test set
 install.packages('caTools')
 library(caTools)
 set.seed(123)
